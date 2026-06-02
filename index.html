@@ -9,6 +9,10 @@
 
 <style>
 
+*{
+    box-sizing:border-box;
+}
+
 body{
     margin:0;
     font-family:Arial,sans-serif;
@@ -20,23 +24,23 @@ body{
 header{
     background:linear-gradient(135deg,#0d6efd,#00c6ff);
     color:white;
-    padding:20px;
+    padding:20px 10px;
 }
 
 header h1{
     margin:0;
-    font-size:38px;
+    font-size:36px;
 }
 
 header p{
-    margin-top:10px;
-    font-size:20px;
+    margin-top:8px;
+    font-size:18px;
 }
 
 .container{
     max-width:500px;
     margin:auto;
-    padding:15px;
+    padding:10px;
 }
 
 .card{
@@ -44,40 +48,46 @@ header p{
     border-radius:15px;
     overflow:hidden;
     box-shadow:0 4px 12px rgba(0,0,0,.15);
-    margin-top:15px;
+    margin-top:10px;
 }
 
 .card img{
     width:100%;
-    height:260px;
+    height:220px;
     object-fit:cover;
 }
 
 .card h2{
-    margin:15px 10px 5px;
-    font-size:24px;
+    margin:12px 10px 5px;
+    font-size:22px;
 }
 
 .card p{
-    padding:0 15px 20px;
-    font-size:18px;
+    padding:0 15px 15px;
+    font-size:16px;
 }
 
 .section-title{
-    margin-top:25px;
-    font-size:32px;
+    margin-top:15px;
+    margin-bottom:10px;
+    font-size:28px;
 }
 
 .btn{
     display:block;
     width:260px;
-    margin:15px auto;
-    padding:18px;
+    margin:12px auto;
+    padding:16px;
     text-decoration:none;
     color:white;
-    font-size:28px;
+    font-size:26px;
     font-weight:bold;
     border-radius:12px;
+    transition:0.3s;
+}
+
+.btn:hover{
+    opacity:0.9;
 }
 
 .btn-buy{
@@ -89,17 +99,39 @@ header p{
 }
 
 .notice{
-    margin-top:25px;
+    margin-top:20px;
     background:#fff3cd;
     border-radius:12px;
-    padding:20px;
-    font-size:18px;
+    padding:15px;
+    font-size:16px;
     line-height:1.8;
 }
 
 footer{
-    margin:25px 0;
+    margin:20px 0;
     color:#888;
+    font-size:14px;
+}
+
+@media(max-width:600px){
+
+header h1{
+    font-size:30px;
+}
+
+.section-title{
+    font-size:24px;
+}
+
+.btn{
+    width:90%;
+    font-size:24px;
+}
+
+.card img{
+    height:200px;
+}
+
 }
 
 </style>
@@ -114,11 +146,9 @@ footer{
 
 <div class="container">
 
-    <h2>สินค้าพร้อมจำหน่าย</h2>
-
     <div class="card">
 
-        <img src="durian.jpg" alt="Durian">
+        <img src="durian.jpg" alt="Premium Durian">
 
         <h2>ทุเรียนหมอนทอง Premium</h2>
 
@@ -133,25 +163,29 @@ footer{
         สั่งซื้อสินค้า
     </h2>
 
-    <a class="btn btn-buy"
-       href="https://shop.line.me/@695dtjrm"
-       target="_blank">
-       🛒 สั่งซื้อ
+    <a
+      class="btn btn-buy"
+      href="https://shop.line.me/@695dtjrm"
+      target="_blank">
+      🛒 สั่งซื้อ
     </a>
 
-   <a href="pickup.html" class="pickup-btn">
-📦 รับสินค้า
-</a>
-   
+    <a
+      class="btn btn-pickup"
+      href="pickup.html">
+      📦 รับสินค้า
+    </a>
+
     <div class="notice">
 
         <h3>วิธีรับสินค้า</h3>
 
         1. สแกน QR หน้าเครื่อง<br>
-        2. สั่งซื้อและชำระเงินผ่าน LINE MyShop<br>
-        3. หลังชำระเงินสำเร็จ ให้สแกน QR หน้าเครื่องอีกครั้ง<br>
-        4. กดปุ่ม "รับสินค้า"<br>
-        5. ระบบจะแสดงช่อง Locker ที่ต้องเปิด
+        2. กดปุ่ม "สั่งซื้อ"<br>
+        3. ชำระเงินผ่าน LINE MyShop<br>
+        4. หลังชำระเงินสำเร็จ สแกน QR อีกครั้ง<br>
+        5. กดปุ่ม "รับสินค้า"<br>
+        6. ระบบจะแสดง Locker ที่ต้องเปิด
 
     </div>
 
@@ -160,18 +194,6 @@ footer{
 <footer>
 © 2026 AI Smart Cooler
 </footer>
-
-<script>
-
-function pickupProduct(){
-
-    alert(
-      "ระบบกำลังตรวจสอบคำสั่งซื้อของคุณ\n\nในเวอร์ชันถัดไปจะแสดง Locker ที่ต้องเปิด"
-    );
-
-}
-
-</script>
 
 </body>
 </html>
