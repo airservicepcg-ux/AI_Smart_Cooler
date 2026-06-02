@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -11,7 +12,7 @@
 body{
     margin:0;
     font-family:Arial,sans-serif;
-    background:#f4f6f9;
+    background:#f4f4f4;
     text-align:center;
 }
 
@@ -27,31 +28,42 @@ header{
     padding:20px;
 }
 
-.status-box{
+.card{
     background:white;
-    border-radius:15px;
-    padding:20px;
-    margin-bottom:20px;
-    box-shadow:0 3px 10px rgba(0,0,0,0.1);
+    border-radius:20px;
+    padding:25px;
+    margin-top:20px;
+    box-shadow:0 4px 15px rgba(0,0,0,.15);
 }
 
-.order-info{
-    font-size:20px;
+.status{
+    color:#28a745;
+    font-size:42px;
+    font-weight:bold;
+    margin-top:20px;
+}
+
+.orderText{
+    font-size:28px;
     line-height:1.8;
 }
 
 .locker-grid{
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    gap:10px;
-    margin-top:20px;
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    margin-top:30px;
+    flex-wrap:wrap;
 }
 
 .locker{
+    width:80px;
+    height:80px;
+    border-radius:15px;
     background:#d9d9d9;
-    color:black;
-    border-radius:12px;
-    padding:25px 0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     font-size:22px;
     font-weight:bold;
 }
@@ -70,87 +82,144 @@ header{
 
 .btn{
     display:inline-block;
-    margin-top:25px;
+    margin-top:30px;
+    padding:18px 35px;
     background:#28a745;
     color:white;
-    padding:15px 30px;
     text-decoration:none;
-    border-radius:10px;
-    font-size:20px;
+    border-radius:12px;
+    font-size:28px;
     font-weight:bold;
 }
 
-.btn:hover{
-    background:#218838;
+.loading{
+    font-size:24px;
+    color:#666;
 }
 
-.footer{
-    margin-top:30px;
-    color:#777;
-    font-size:13px;
+footer{
+    margin:30px;
+    color:#888;
 }
 
 </style>
+
 </head>
 
 <body>
 
 <header>
-    <h1>AI Smart Cooler</h1>
-    <p>ระบบรับสินค้าอัตโนมัติ</p>
+
+<h1>AI Smart Cooler</h1>
+<p>ระบบรับสินค้าอัตโนมัติ</p>
+
 </header>
 
 <div class="container">
 
-    <div class="status-box">
+<div class="card">
+
+<div id="orderInfo" class="loading">
+
+กำลังตรวจสอบคำสั่งซื้อ...
+
+</div>
+
+</div>
+
+<div>
+
+<h2>ตำแหน่ง Locker</h2>
+
+<div class="locker-grid">
+
+<div id="L1" class="locker">L1</div>
+<div id="L2" class="locker">L2</div>
+<div id="L3" class="locker">L3</div>
+<div id="L4" class="locker">L4</div>
+<div id="L5" class="locker">L5</div>
+
+</div>
+
+</div>
+
+<a class="btn" href="index.html">
+✅ รับสินค้าเรียบร้อย
+</a>
+
+</div>
+
+<footer>
+© 2026 AI Smart Cooler
+</footer>
+
+<script>
+
+const API_URL =
+"https://script.google.com/macros/s/AKfycbxr-mefQsURIzn0y5hWC_i6vCgEozKj9dCPO0pHEsP8K1oIheoKPIMgYRJeFpNIntF8/exec";
+
+fetch(API_URL)
+
+.then(response => response.json())
+
+.then(data => {
+
+    document.getElementById("orderInfo").innerHTML = `
 
         <h2>✅ ตรวจพบคำสั่งซื้อแล้ว</h2>
 
-        <div class="order-info">
+        <div class="orderText">
 
-            Order No : 2026060281278034<br>
+        Order No : ${data.orderId}
 
-            สินค้า : ทุเรียนหมอนทอง 500 กรัม<br>
+        <br><br>
 
-            Locker : <b>L1</b>
+        สินค้า :
+        ${data.product}
+
+        <br><br>
+
+        Locker :
+        <b>${data.locker}</b>
 
         </div>
 
-        <h2 style="color:#28a745;">
-            🔓 ประตูกำลังเปิด
-        </h2>
+        <div class="status">
 
-    </div>
+        🔓 ประตูกำลังเปิด
 
-    <h2>ตำแหน่ง Locker</h2>
+        </div>
 
-    <div class="locker-grid">
+    `;
 
-        <div class="locker active">L1</div>
+    const locker =
+    document.getElementById(data.locker);
 
-        <div class="locker">L2</div>
+    if(locker){
 
-        <div class="locker">L3</div>
+        locker.classList.add("active");
 
-        <div class="locker">L4</div>
+    }
 
-        <div class="locker">L5</div>
+})
 
-    </div>
+.catch(error => {
 
-    <p style="margin-top:20px;font-size:22px;color:#28a745;">
-        กรุณาเปิดช่อง L1 เพื่อรับสินค้า
+    document.getElementById("orderInfo").innerHTML = `
+
+    <h2 style="color:red;">
+    ไม่พบคำสั่งซื้อ
+    </h2>
+
+    <p>
+    กรุณาสั่งซื้อและชำระเงินก่อนรับสินค้า
     </p>
 
-    <a href="index.html" class="btn">
-        ✅ รับสินค้าเรียบร้อย
-    </a>
+    `;
 
-    <div class="footer">
-        © 2026 AI Smart Cooler
-    </div>
+});
 
-</div>
+</script>
 
 </body>
 </html>
