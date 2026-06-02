@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="th">
 <head>
 
@@ -80,21 +81,16 @@ header{
     }
 }
 
-.btn{
-    display:inline-block;
-    margin-top:30px;
-    padding:18px 35px;
-    background:#28a745;
-    color:white;
-    text-decoration:none;
-    border-radius:12px;
-    font-size:28px;
-    font-weight:bold;
-}
-
 .loading{
     font-size:24px;
     color:#666;
+}
+
+#countdown{
+    font-size:32px;
+    font-weight:bold;
+    color:red;
+    margin-top:25px;
 }
 
 footer{
@@ -125,9 +121,11 @@ footer{
 
 </div>
 
+<div id="countdown"></div>
+
 </div>
 
-<div>
+<div id="lockerSection">
 
 <h2>ตำแหน่ง Locker</h2>
 
@@ -142,10 +140,6 @@ footer{
 </div>
 
 </div>
-
-<a class="btn" href="index.html">
-✅ รับสินค้าเรียบร้อย
-</a>
 
 </div>
 
@@ -201,6 +195,53 @@ fetch(API_URL)
 
     }
 
+    let seconds = 120;
+
+    document.getElementById("countdown").innerHTML =
+        "เวลารับสินค้าเหลือ : 120 วินาที";
+
+    const timer = setInterval(() => {
+
+        seconds--;
+
+        document.getElementById("countdown").innerHTML =
+            "เวลารับสินค้าเหลือ : " +
+            seconds +
+            " วินาที";
+
+        if(seconds <= 0){
+
+            clearInterval(timer);
+
+            document.getElementById("orderInfo").innerHTML = `
+
+            <h2 style="color:red;">
+            ⏰ หมดเวลารับสินค้าแล้ว
+            </h2>
+
+            <p style="
+            font-size:24px;
+            line-height:2;
+            ">
+
+            หากท่านยังไม่ได้รับสินค้า<br>
+
+            กรุณาติดต่อร้านค้า<br><br>
+
+            <b>082-564-1513</b>
+
+            </p>
+
+            `;
+
+            document.getElementById("countdown").innerHTML = "";
+
+            document.getElementById("lockerSection").style.display = "none";
+
+        }
+
+    },1000);
+
 })
 
 .catch(error => {
@@ -217,9 +258,12 @@ fetch(API_URL)
 
     `;
 
+    document.getElementById("lockerSection").style.display = "none";
+
 });
 
 </script>
 
 </body>
 </html>
+
