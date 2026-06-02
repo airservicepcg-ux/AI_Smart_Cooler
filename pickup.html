@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>รับสินค้า | AI Smart Cooler</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f4f6f9;
+    text-align:center;
+}
+
+header{
+    background:linear-gradient(135deg,#0d6efd,#00c6ff);
+    color:white;
+    padding:20px;
+}
+
+.container{
+    max-width:700px;
+    margin:auto;
+    padding:20px;
+}
+
+.status-box{
+    background:white;
+    border-radius:15px;
+    padding:20px;
+    margin-bottom:20px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.1);
+}
+
+.order-info{
+    font-size:20px;
+    line-height:1.8;
+}
+
+.locker-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:10px;
+    margin-top:20px;
+}
+
+.locker{
+    background:#d9d9d9;
+    color:black;
+    border-radius:12px;
+    padding:25px 0;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.active{
+    background:#28a745;
+    color:white;
+    animation:blink 1s infinite;
+}
+
+@keyframes blink{
+    50%{
+        opacity:0.4;
+    }
+}
+
+.btn{
+    display:inline-block;
+    margin-top:25px;
+    background:#28a745;
+    color:white;
+    padding:15px 30px;
+    text-decoration:none;
+    border-radius:10px;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.btn:hover{
+    background:#218838;
+}
+
+.footer{
+    margin-top:30px;
+    color:#777;
+    font-size:13px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>AI Smart Cooler</h1>
+    <p>ระบบรับสินค้าอัตโนมัติ</p>
+</header>
+
+<div class="container">
+
+    <div class="status-box">
+
+        <h2>✅ ตรวจพบคำสั่งซื้อแล้ว</h2>
+
+        <div class="order-info">
+
+            Order No : 2026060281278034<br>
+
+            สินค้า : ทุเรียนหมอนทอง 500 กรัม<br>
+
+            Locker : <b>L1</b>
+
+        </div>
+
+        <h2 style="color:#28a745;">
+            🔓 ประตูกำลังเปิด
+        </h2>
+
+    </div>
+
+    <h2>ตำแหน่ง Locker</h2>
+
+    <div class="locker-grid">
+
+        <div class="locker active">L1</div>
+
+        <div class="locker">L2</div>
+
+        <div class="locker">L3</div>
+
+        <div class="locker">L4</div>
+
+        <div class="locker">L5</div>
+
+    </div>
+
+    <p style="margin-top:20px;font-size:22px;color:#28a745;">
+        กรุณาเปิดช่อง L1 เพื่อรับสินค้า
+    </p>
+
+    <a href="index.html" class="btn">
+        ✅ รับสินค้าเรียบร้อย
+    </a>
+
+    <div class="footer">
+        © 2026 AI Smart Cooler
+    </div>
+
+</div>
+
+</body>
+</html>
